@@ -47,8 +47,9 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-
+#include "cbox.h"
 #include "car.h"
+#include "testdataform.h"
 
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QGraphicsView>
@@ -66,12 +67,25 @@ int main(int argc, char *argv[])
     Car *car = new Car();
     scene.addItem(car);
 
+    CBox *CBoxTest = new CBox();
+    scene.addItem(CBoxTest);
+
+    TestDataForm* TDF = new TestDataForm();
+    TDF->show();
+    car->accelerate();
+    car->turnLeft();
+    car->turnLeft();
+    car->turnLeft();
+    car->accelerate();
     QGraphicsView view(&scene);
     view.setRenderHint(QPainter::Antialiasing);
     view.setBackgroundBrush(Qt::darkGray);
     view.setWindowTitle(QT_TRANSLATE_NOOP(QGraphicsView, "Qt DBus Controlled Car"));
     view.resize(400, 300);
     view.show();
+
+
+
 
 
     return app.exec();
